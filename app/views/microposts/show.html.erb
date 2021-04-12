@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        Micropost
+      </div>
+
+      <div class="panel-body">
+        <p>
+          <strong>Message:</strong>
+          <%= @micropost.message %>
+        </p>
+
+        <p>
+          <strong>User:</strong>
+          <%= link_to @micropost.user.email, user_path(@micropost.user) %>
+        </p>
+      </div>
+
+      <div class="panel-footer">
+        <%= link_to 'Edit', edit_micropost_path(@micropost), class: "btn btn-success" %>
+        <%= link_to 'Back', microposts_path, class: "btn btn-default" %>
+      </div>
+    </div>
+  </div>
+</div>

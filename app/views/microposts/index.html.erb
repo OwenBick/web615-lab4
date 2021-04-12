@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1>Microposts</h1>
+      </div>
+
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>Message</th>
+          <th>User</th>
+          <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @microposts.each do |micropost| %>
+          <tr>
+            <td><%= micropost.message %></td>
+            <td><%= link_to micropost.user.email, user_path(micropost.user) %></td>
+            <td>
+              <div class="btn-group-vertical">
+                <%= link_to 'Show', micropost, class: 'btn btn-default btn-sm' %>
+                <%= link_to 'Edit', edit_micropost_path(micropost), class: 'btn btn-success btn-sm' %>
+                <%= link_to 'Destroy', micropost, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+      <div class="panel-footer">
+        <%= link_to 'New Micropost', new_micropost_path, class: 'btn btn-default' %>
+
+        <%= will_paginate @microposts %>
+        <br />
+        <%= page_entries_info @microposts %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
